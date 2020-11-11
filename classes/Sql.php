@@ -5,6 +5,8 @@ class Sql {
     private $conn;
 
     public function __construct(){
+
+        // $this->conn =  new PDO("pgsql:dbname=heroku_8df5d5d666ba6b7;host=us-cdbr-east-05.cleardb.net", "b0f29a6f31418d", "e736a404");
         
         $this->conn =  new PDO("mysql:dbname=heroku_8df5d5d666ba6b7;host=us-cdbr-east-05.cleardb.net", "b0f29a6f31418d", "e736a404");
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
