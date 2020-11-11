@@ -1,16 +1,14 @@
 <?php
-
 require_once("classes/Sql.php");
 $sql = new Sql();
-$cadastros = $sql->listAll();
-
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if($id){
     $sql->deleteData($id);
-    header("Location: /");
+    header("Location: index.php");
     exit;
 }
+$cadastros = $sql->listAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +28,7 @@ if($id){
     <div class="nav-wrapper">
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Listar Clientes</a></li>
+        <li><a href="/index.php">Listar Clientes</a></li>
         <li><a href="/form.php">Cadastrar Cliente</a></li>
       </ul>
     </div>
@@ -38,7 +36,7 @@ if($id){
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="/">Listar Clientes</a></li>
+    <li><a href="/index.php">Listar Clientes</a></li>
     <li><a href="/form.php">Cadastrar Cliente</a></li>
   </ul>
     </header>
@@ -65,7 +63,7 @@ if($id){
                             <a class="btn-floating blue" href="form.php?id=<?php echo $cadastro['id']; ?>">
                                 <i class="material-icons">edit</i>
                             </a>
-                            <a class="btn-floating red" href="/?id=<?php echo $cadastro['id']; ?>">
+                            <a class="btn-floating red" href="/index.php?id=<?php echo $cadastro['id']; ?>">
                                 <i class="material-icons">delete_forever</i>
                             </a>
                         </div>
